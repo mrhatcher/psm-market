@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSM Market — Chapel Hill, NC | Gas, Food & More</title>
+  <meta name="description" content="PSM Market on Hwy 54 West in Chapel Hill, NC. Marathon gas, Hunt Brothers Pizza, hot food, ATM, U-Haul rentals, and NC Lottery. Open 7 days a week." />
+  <meta name="keywords" content="PSM Market, PSM Food Mart, Chapel Hill gas station, Marathon gas Chapel Hill, Hunt Brothers Pizza Chapel Hill, convenience store Chapel Hill NC, U-Haul Chapel Hill" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="PSM Market — Chapel Hill, NC" />
+  <meta property="og:description" content="Your neighborhood stop on Hwy 54 West. Gas, hot food, U-Haul, ATM & more." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Tokens ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red:     #CC2229;   /* Marathon red */
+      --red2:    #a81b21;
+      --amber:   #E8801A;
+      --amber2:  #c96a10;
+      --cream:   #FDF6EC;
+      --cream2:  #f5ead6;
+      --brown:   #3D2B1F;
+      --brown2:  #5c4030;
+      --tan:     #c4a882;
+      --white:   #ffffff;
+      --gray:    #f7f4ef;
+      --muted:   #8a7060;
+      --text:    #2a1f17;
+      --radius:  14px;
+      --shadow:  0 4px 28px rgba(61,43,31,.10);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Animations ──────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .fade-up.d1 { transition-delay: .1s; }
+    .fade-up.d2 { transition-delay: .2s; }
+    .fade-up.d3 { transition-delay: .3s; }
+    .fade-up.d4 { transition-delay: .4s; }
+    .fade-up.d5 { transition-delay: .5s; }
+    .fade-up.d6 { transition-delay: .6s; }
+
+    /* ── Layout ──────────────────────────────────────── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 88px 0; }
+    .section-tag {
+      display: inline-block;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.18;
+      color: var(--brown);
+    }
+    .section-sub {
+      font-size: 1.02rem;
+      color: var(--muted);
+      margin-top: 14px;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .divider {
+      width: 48px;
+      height: 4px;
+      background: var(--amber);
+      border-radius: 4px;
+      margin-top: 16px;
+    }
+
+    /* ── Buttons ─────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 8px;
+      font-size: .95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background .2s, color .2s, transform .15s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-red { background: var(--red); color: var(--white); border-color: var(--red); }
+    .btn-red:hover { background: var(--red2); box-shadow: 0 6px 20px rgba(204,34,41,.35); }
+    .btn-amber { background: var(--amber); color: var(--white); border-color: var(--amber); }
+    .btn-amber:hover { background: var(--amber2); box-shadow: 0 6px 20px rgba(232,128,26,.35); }
+    .btn-outline-white { background: transparent; color: var(--white); border-color: rgba(255,255,255,.6); }
+    .btn-outline-white:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
+
+    /* ══════════════════════════════════
+       HEADER
+    ══════════════════════════════════ */
+    #site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: rgba(61,43,31,.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: box-shadow .3s;
+    }
+    #site-header.scrolled { box-shadow: 0 4px 28px rgba(0,0,0,.35); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-badge {
+      width: 42px; height: 42px;
+      background: var(--red);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: -.02em;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .logo-text .name {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: -.01em;
+    }
+    .logo-text .sub {
+      font-size: .72rem;
+      color: var(--tan);
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* Nav */
+    nav.links { display: flex; align-items: center; gap: 28px; }
+    nav.links a {
+      color: rgba(255,255,255,.72);
+      font-size: .88rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    nav.links a:hover { color: var(--white); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+    @media (max-width: 840px) {
+      nav.links, .header-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: #2e1f15;
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 12px 24px 20px;
+      gap: 2px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: rgba(255,255,255,.8);
+      font-size: .95rem;
+      font-weight: 500;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .mobile-nav .btn { margin-top: 12px; justify-content: center; }
+
+    /* ══════════════════════════════════
+       HERO
+    ══════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      background: var(--brown);
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 64px;
+      overflow: hidden;
+    }
+    /* Warm textured overlay */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 90% 70% at 60% 50%, rgba(232,128,26,.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 80% at 10% 90%, rgba(204,34,41,.12) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    /* Subtle dot texture */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 0 72px;
+      max-width: 700px;
+    }
+    .open-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,128,26,.2);
+      border: 1px solid rgba(232,128,26,.4);
+      border-radius: 100px;
+      padding: 5px 14px 5px 8px;
+      margin-bottom: 28px;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #ffc57a;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .open-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #4cbe7a;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 22px;
+      letter-spacing: -.01em;
+    }
+    .hero-title .accent { color: var(--amber); }
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: #d4b898;
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 52px; }
+    /* Quick info pills */
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 100px;
+      padding: 7px 15px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: #e4cdb0;
+    }
+    .pill svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--amber); }
+
+    /* ══════════════════════════════════
+       HOURS TICKER BAR
+    ══════════════════════════════════ */
+    #hours-bar {
+      background: var(--red);
+      padding: 14px 0;
+    }
+    .hours-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px 36px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .hours-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hours-bar-item svg { width: 16px; height: 16px; opacity: .85; }
+    .hours-sep { color: rgba(255,255,255,.35); font-size: 1.1rem; }
+
+    /* ══════════════════════════════════
+       SERVICES GRID
+    ══════════════════════════════════ */
+    #services { background: var(--cream); }
+    .services-header { margin-bottom: 52px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 860px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .services-grid { grid-template-columns: 1fr; } }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--cream2);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(61,43,31,.14); }
+    .service-card.featured {
+      border-top: 4px solid var(--red);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-icon svg { width: 26px; height: 26px; }
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--brown);
+    }
+    .service-card p {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .service-tag {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      align-self: flex-start;
+    }
+
+    /* ══════════════════════════════════
+       FOOD SECTION
+    ══════════════════════════════════ */
+    #food { background: var(--white); }
+    .food-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 800px) { .food-wrap { grid-template-columns: 1fr; gap: 40px; } }
+    .food-visual {
+      position: relative;
+    }
+    .food-card-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .food-item-card {
+      background: var(--cream);
+      border: 1px solid var(--cream2);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      transition: transform .2s;
+    }
+    .food-item-card:hover { transform: scale(1.03); }
+    .food-item-card.tall { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+    .food-emoji { font-size: 2.4rem; margin-bottom: 10px; }
+    .food-item-card h4 {
+      font-size: .9rem;
+      font-weight: 800;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+    .food-item-card p { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+    .food-badge {
+      position: absolute;
+      top: -14px; right: -14px;
+      background: var(--red);
+      color: var(--white);
+      font-size: .75rem;
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 100px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(204,34,41,.35);
+    }
+    @media (max-width: 560px) { .food-badge { display: none; } }
+    .food-content .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .92rem;
+      color: var(--text);
+    }
+    .check-icon {
+      width: 22px; height: 22px;
+      background: rgba(232,128,26,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .check-icon svg { width: 12px; height: 12px; color: var(--amber); }
+    .check-item strong { font-weight: 700; }
+
+    /* ══════════════════════════════════
+       MARATHON GAS
+    ══════════════════════════════════ */
+    #gas { background: var(--brown); position: relative; overflow: hidden; }
+    #gas::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 100% at 90% 50%, rgba(204,34,41,.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .gas-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 800px) { .gas-inner { grid-template-columns: 1fr; gap: 40px; } }
+    .gas-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.18;
+    }
+    .gas-content p { font-size: .95rem; color: #c4a882; line-height: 1.7; margin-bottom: 28px; }
+    .marathon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--red);
+      border-radius: 10px;
+      padding: 14px 22px;
+      margin-bottom: 28px;
+    }
+    .marathon-m {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: var(--white);
+      line-height: 1;
+    }
+    .marathon-label {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .marathon-label .top { font-size: .65rem; font-weight: 700; color: rgba(255,255,255,.7); letter-spacing: .1em; text-transform: uppercase; }
+    .marathon-label .bottom { font-size: 1rem; font-weight: 800; color: var(--white); }
+    .gas-grades {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .grade-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: background .2s;
+    }
+    .grade-card:hover { background: rgba(255,255,255,.1); }
+    .grade-num {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .grade-name {
+      font-size: .78rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.6);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ══════════════════════════════════
+       PERKS ROW (ATM / UHAUL / LOTTERY)
+    ══════════════════════════════════ */
+    #perks { background: var(--cream); }
+    .perks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 700px) { .perks-grid { grid-template-columns: 1fr; } }
+    .perk-card {
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .perk-card.atm { background: var(--white); border: 1px solid var(--cream2); box-shadow: var(--shadow); }
+    .perk-card.uhaul { background: #fef6e0; border: 1px solid #f5dfa0; box-shadow: var(--shadow); }
+    .perk-card.lottery { background: #fef2f2; border: 1px solid #fccaca; box-shadow: var(--shadow); }
+    .perk-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+    .perk-card.atm .perk-icon { background: rgba(30,111,217,.1); }
+    .perk-card.uhaul .perk-icon { background: rgba(232,128,26,.15); }
+    .perk-card.lottery .perk-icon { background: rgba(204,34,41,.1); }
+    .perk-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--brown); }
+    .perk-card p { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+    /* ══════════════════════════════════
+       ABOUT / COMMUNITY
+    ══════════════════════════════════ */
+    #about { background: var(--white); }
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    @media (max-width: 800px) { .about-wrap { grid-template-columns: 1fr; gap: 40px; } }
+    .about-visual {
+      position: relative;
+    }
+    .about-card-bg {
+      background: var(--cream);
+      border-radius: 20px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(232,128,26,.12) 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+    .about-store-icon {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .store-building {
+      font-size: 5rem;
+      line-height: 1;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,.12));
+    }
+    .about-card-label {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--brown2);
+      margin-top: 12px;
+    }
+    .since-badge {
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 14px 18px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(204,34,41,.35);
+    }
+    .since-badge .year { font-size: 1.5rem; font-weight: 900; line-height: 1; }
+    .since-badge .label { font-size: .68rem; font-weight: 700; opacity: .85; text-transform: uppercase; letter-spacing: .06em; }
+    .about-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+    .about-content p {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .quote-block {
+      border-left: 4px solid var(--amber);
+      padding-left: 20px;
+      margin: 24px 0;
+    }
+    .quote-block p {
+      font-size: 1rem;
+      color: var(--brown2);
+      font-style: italic;
+      margin: 0;
+    }
+    .quote-attr { font-size: .82rem; font-weight: 700; color: var(--amber); margin-top: 8px; font-style: normal; }
+
+    /* ══════════════════════════════════
+       REVIEWS
+    ══════════════════════════════════ */
+    #reviews { background: var(--cream); }
+    .reviews-header { text-align: center; margin-bottom: 48px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 840px) { .reviews-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; } }
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--cream2);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform .2s;
+    }
+    .review-card:hover { transform: translateY(-3px); }
+    .stars { display: flex; gap: 3px; }
+    .stars svg { width: 15px; height: 15px; fill: #f5a623; }
+    .review-text {
+      font-size: .9rem;
+      color: var(--text);
+      line-height: 1.7;
+      flex: 1;
+      font-style: italic;
+    }
+    .review-text::before { content: '\201C'; }
+    .review-text::after  { content: '\201D'; }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid var(--cream2);
+      padding-top: 14px;
+    }
+    .avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800;
+      font-size: .85rem;
+      color: white;
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 700; font-size: .85rem; color: var(--brown); }
+    .reviewer-source { font-size: .75rem; color: var(--muted); }
+
+    /* ══════════════════════════════════
+       LOCATION / HOURS
+    ══════════════════════════════════ */
+    #location { background: var(--white); }
+    .location-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 800px) { .location-wrap { grid-template-columns: 1fr; gap: 40px; } }
+    .map-frame {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 4/3;
+    }
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+    .hours-table tr { border-bottom: 1px solid var(--cream2); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: 11px 4px; font-size: .9rem; }
+    .hours-table td:first-child { color: var(--muted); font-weight: 600; }
+    .hours-table td:last-child { text-align: right; font-weight: 700; color: var(--brown); }
+    .hours-table tr.today td { color: var(--amber); }
+    .hours-table tr.today td:last-child { color: var(--red); }
+    .info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .info-icon {
+      width: 40px; height: 40px;
+      background: var(--cream);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-icon svg { width: 18px; height: 18px; color: var(--amber); }
+    .info-label { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+    .info-val { font-size: .95rem; font-weight: 600; color: var(--brown); }
+    .info-val a { color: var(--red); transition: color .2s; }
+    .info-val a:hover { color: var(--red2); }
+
+    /* ══════════════════════════════════
+       FOOTER
+    ══════════════════════════════════ */
+    footer {
+      background: var(--brown);
+      padding: 48px 0 28px;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+    .footer-brand p {
+      font-size: .88rem;
+      color: var(--tan);
+      max-width: 280px;
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+    .footer-links h4 {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 14px;
+    }
+    .footer-links ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: .88rem; color: rgba(255,255,255,.55); transition: color .2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-copy { font-size: .8rem; color: rgba(255,255,255,.3); }
+
+    /* ══════════════════════════════════
+       BACK TO TOP
+    ══════════════════════════════════ */
+    #back-top {
+      position: fixed;
+      bottom: 26px; right: 26px;
+      width: 44px; height: 44px;
+      background: var(--amber);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 16px rgba(232,128,26,.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .2s;
+      z-index: 900;
+    }
+    #back-top.show { opacity: 1; pointer-events: all; }
+    #back-top:hover { transform: translateY(-3px); }
+    #back-top svg { width: 20px; height: 20px; color: var(--white); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════
+     HEADER
+══════════════════════════════ -->
+<header id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="PSM Market home">
+        <div class="logo-badge" aria-hidden="true">PSM</div>
+        <div class="logo-text">
+          <span class="name">PSM Market</span>
+          <span class="sub">Chapel Hill, NC</span>
+        </div>
+      </a>
+
+      <nav class="links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#food">Food</a>
+        <a href="#gas">Gas</a>
+        <a href="#about">About</a>
+        <a href="#location">Hours &amp; Location</a>
+      </nav>
+
+      <a href="tel:+19199677552" class="btn btn-amber header-cta" aria-label="Call PSM Market">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        Call Us
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#food" class="mobile-link">Food</a>
+    <a href="#gas" class="mobile-link">Gas</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#location" class="mobile-link">Hours &amp; Location</a>
+    <a href="tel:+19199677552" class="btn btn-amber">Call (919) 967-7552</a>
+  </nav>
+</header>
+
+
+<!-- ══════════════════════════
+     HERO
+══════════════════════════════ -->
+<section id="hero" aria-label="Welcome to PSM Market">
+  <div class="container">
+    <div class="hero-content">
+      <div class="open-badge fade-up" aria-live="polite">
+        <div class="open-dot" aria-hidden="true"></div>
+        Open 7 Days a Week &mdash; Mon&ndash;Fri from 6 AM
+      </div>
+
+      <h1 class="hero-title fade-up d1">
+        Your Neighborhood<br>Stop on <span class="accent">Hwy 54.</span>
+      </h1>
+
+      <p class="hero-sub fade-up d2">
+        Gas, hot food, snacks, and a friendly face — PSM Market has been serving the Chapel Hill community for years. Come on in.
+      </p>
+
+      <div class="hero-btns fade-up d3">
+        <a href="#location" class="btn btn-amber">Hours &amp; Directions</a>
+        <a href="tel:+19199677552" class="btn btn-outline-white">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          (919) 967-7552
+        </a>
+      </div>
+
+      <div class="hero-pills fade-up d4">
+        <div class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+          Hot Food Daily
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+          U-Haul Rentals
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+          </svg>
+          ATM On-Site
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          NC Lottery
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          Convenience Store
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     HOURS TICKER
+══════════════════════════════ -->
+<div id="hours-bar" role="complementary" aria-label="Store hours">
+  <div class="container">
+    <div class="hours-bar-inner">
+      <div class="hours-bar-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <strong>Today's Hours:</strong>
+      </div>
+      <div class="hours-bar-item" id="todays-hours">Mon–Fri: 6:30AM – 10PM</div>
+      <span class="hours-sep" aria-hidden="true">|</span>
+      <div class="hours-bar-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        <a href="tel:+19199677552" style="color:inherit">(919) 967-7552</a>
+      </div>
+      <span class="hours-sep" aria-hidden="true">|</span>
+      <div class="hours-bar-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        4908 NC Hwy 54 West, Chapel Hill
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════
+     SERVICES
+══════════════════════════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="services-header">
+      <p class="section-tag fade-up">Everything You Need</p>
+      <h2 class="section-title fade-up d1">One stop. All the essentials.</h2>
+      <div class="divider fade-up d2"></div>
+      <p class="section-sub fade-up d3">We're more than just a gas station. PSM Market is your full-service neighborhood stop — from fuel to food to moving day.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card featured fade-up">
+        <div class="service-icon" style="background:rgba(204,34,41,.1);" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#CC2229" stroke-width="2">
+            <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/>
+          </svg>
+        </div>
+        <h3>Marathon Fuel</h3>
+        <p>Quality Marathon gasoline — Regular, Plus, and Premium grades. Fill up quick and get on your way.</p>
+        <span class="service-tag" style="background:rgba(204,34,41,.1);color:var(--red);">On-Site</span>
+      </div>
+
+      <div class="service-card fade-up d1">
+        <div class="service-icon" style="background:rgba(232,128,26,.12);" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8801A" stroke-width="2">
+            <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+        </div>
+        <h3>Hot Food &amp; Deli</h3>
+        <p>Hunt Brothers Pizza, subs, chicken, breakfast items, and more — fresh and hot, made to order.</p>
+        <span class="service-tag" style="background:rgba(232,128,26,.12);color:var(--amber2);">Made Fresh</span>
+      </div>
+
+      <div class="service-card fade-up d2">
+        <div class="service-icon" style="background:rgba(50,130,220,.1);" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2a6ebf" stroke-width="2">
+            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <h3>U-Haul Rentals</h3>
+        <p>Authorized U-Haul neighborhood dealer. Trucks and equipment available — perfect for your next move.</p>
+        <span class="service-tag" style="background:rgba(50,130,220,.1);color:#2a6ebf;">Available Here</span>
+      </div>
+
+      <div class="service-card fade-up d3">
+        <div class="service-icon" style="background:rgba(60,180,100,.1);" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2a9d5c" stroke-width="2">
+            <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+          </svg>
+        </div>
+        <h3>ATM On-Site</h3>
+        <p>Convenient cash access right here on the lot. No need to make a special trip — we've got you covered.</p>
+        <span class="service-tag" style="background:rgba(60,180,100,.1);color:#2a9d5c;">24hr Access</span>
+      </div>
+
+      <div class="service-card fade-up d4">
+        <div class="service-icon" style="background:rgba(232,128,26,.12);" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8801A" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <h3>NC Lottery</h3>
+        <p>Full selection of NC Lottery tickets — scratch-offs, Powerball, Mega Millions, Pick 3, Pick 4, and more.</p>
+        <span class="service-tag" style="background:rgba(232,128,26,.12);color:var(--amber2);">In Store</span>
+      </div>
+
+      <div class="service-card fade-up d5">
+        <div class="service-icon" style="background:rgba(120,90,60,.1);" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6b4c2e" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+        </div>
+        <h3>Convenience Store</h3>
+        <p>Drinks, snacks, tobacco, household essentials, and more. Everything you need when you need it most.</p>
+        <span class="service-tag" style="background:rgba(120,90,60,.1);color:var(--brown2);">Fully Stocked</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     FOOD
+══════════════════════════════ -->
+<section id="food" class="section">
+  <div class="container">
+    <div class="food-wrap">
+      <div class="food-visual fade-up">
+        <div class="food-badge" aria-hidden="true">Fresh Daily</div>
+        <div class="food-card-stack">
+          <div class="food-item-card tall">
+            <div class="food-emoji" aria-hidden="true">🍕</div>
+            <h4>Hunt Brothers Pizza</h4>
+            <p>Fresh-made pizza by the slice or whole pie. Always hot, always ready.</p>
+          </div>
+          <div class="food-item-card">
+            <div class="food-emoji" aria-hidden="true">🍗</div>
+            <h4>Chicken Wings</h4>
+            <p>Hot, crispy, and satisfying.</p>
+          </div>
+          <div class="food-item-card">
+            <div class="food-emoji" aria-hidden="true">☕</div>
+            <h4>Breakfast</h4>
+            <p>Start your morning right.</p>
+          </div>
+          <div class="food-item-card">
+            <div class="food-emoji" aria-hidden="true">🥔</div>
+            <h4>Fresh Sides</h4>
+            <p>Potatoes and more to round out your meal.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="food-content fade-up d2">
+        <p class="section-tag">Hot Food</p>
+        <h2 class="section-title">Real food, made fresh — not just snacks</h2>
+        <div class="divider"></div>
+        <ul class="check-list">
+          <li class="check-item">
+            <div class="check-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><strong>Hunt Brothers Pizza</strong> — Chapel Hill's favorite gas station pizza, fresh and hot by the slice or whole pie</div>
+          </li>
+          <li class="check-item">
+            <div class="check-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><strong>Chicken wing burgers</strong> — a PSM staple that keeps regulars coming back</div>
+          </li>
+          <li class="check-item">
+            <div class="check-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><strong>Breakfast items</strong> to kick off your morning on the right foot</div>
+          </li>
+          <li class="check-item">
+            <div class="check-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><strong>Fresh potatoes</strong> and sides to round out your meal</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     MARATHON GAS
+══════════════════════════════ -->
+<section id="gas" class="section">
+  <div class="container">
+    <div class="gas-inner">
+      <div class="gas-content fade-up">
+        <p class="section-tag" style="color:var(--amber);">Fuel Up</p>
+        <h2>Quality Marathon fuel, right on your route</h2>
+        <p>Whether you're heading into Chapel Hill, cutting through on Hwy 54, or just running low — PSM Market has three grades of Marathon gasoline to keep you moving. Quick in, quick out.</p>
+        <div class="marathon-badge" aria-label="Marathon gas brand">
+          <div class="marathon-m" aria-hidden="true">M</div>
+          <div class="marathon-label">
+            <span class="top">Authorized Dealer</span>
+            <span class="bottom">Marathon Petroleum</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gas-grades fade-up d2">
+        <div class="grade-card">
+          <div class="grade-num">87</div>
+          <div class="grade-name">Regular</div>
+        </div>
+        <div class="grade-card">
+          <div class="grade-num">89</div>
+          <div class="grade-name">Plus</div>
+        </div>
+        <div class="grade-card">
+          <div class="grade-num">93</div>
+          <div class="grade-name">Premium</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     PERKS
+══════════════════════════════ -->
+<section id="perks" class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <p class="section-tag fade-up">More Than Gas</p>
+      <h2 class="section-title fade-up d1">Extra services that make life easier</h2>
+    </div>
+
+    <div class="perks-grid">
+      <div class="perk-card atm fade-up">
+        <div class="perk-icon" aria-hidden="true">🏧</div>
+        <h3>ATM On-Site</h3>
+        <p>Need cash in a hurry? Our on-site ATM is accessible during store hours. Skip the detour — we've got you covered right here on Hwy 54.</p>
+      </div>
+
+      <div class="perk-card uhaul fade-up d2">
+        <div class="perk-icon" aria-hidden="true">🚚</div>
+        <h3>U-Haul Truck Rentals</h3>
+        <p>PSM Market is an authorized U-Haul neighborhood dealer. Reserve a truck or cargo van for your next move — local pickup, easy process, no runaround.</p>
+      </div>
+
+      <div class="perk-card lottery fade-up d3">
+        <div class="perk-icon" aria-hidden="true">🎰</div>
+        <h3>NC Lottery Tickets</h3>
+        <p>Full selection of NC Lottery tickets available in-store. Scratch-offs, Powerball, Mega Millions, Cash 5 — pick your lucky numbers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     ABOUT
+══════════════════════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-wrap">
+      <div class="about-visual fade-up">
+        <div class="about-card-bg" role="img" aria-label="PSM Market storefront illustration">
+          <div class="about-pattern" aria-hidden="true"></div>
+          <div class="about-store-icon">
+            <div class="store-building" aria-hidden="true">⛽</div>
+            <div class="about-card-label">PSM Market — Chapel Hill, NC</div>
+          </div>
+        </div>
+        <div class="since-badge" aria-label="Serving the community">
+          <div class="year">Hwy 54</div>
+          <div class="label">Chapel Hill, NC</div>
+        </div>
+      </div>
+
+      <div class="about-content fade-up d2">
+        <p class="section-tag">About Us</p>
+        <h2>A neighborhood staple, run by people who care</h2>
+        <div class="divider" style="margin-bottom:20px;"></div>
+        <p>PSM Market isn't a faceless chain — it's a family-run neighborhood stop on Hwy 54 West in Chapel Hill. Jay and the team have built a reputation for being the friendliest gas station on this stretch of road, and it shows in every interaction.</p>
+        <p>Whether you're a commuter grabbing coffee, a student stopping for a quick bite, or a neighbor picking up lottery tickets on your way home — you're going to get a smile and honest service every single time.</p>
+
+        <div class="quote-block">
+          <p>I will be stopping at this location for gas or snacks from now on. It's the only place with friendly service on this stretch of road.</p>
+          <div class="quote-attr">— A happy PSM Market customer</div>
+        </div>
+
+        <a href="#location" class="btn btn-amber">Find Us on the Map</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     REVIEWS
+══════════════════════════════ -->
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="reviews-header">
+      <p class="section-tag fade-up">What People Say</p>
+      <h2 class="section-title fade-up d1">The Chapel Hill community loves PSM</h2>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card fade-up">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">I will be stopping at this location for gas or snacks from now on. It's the only place with friendly service on this stretch of road.</p>
+        <div class="reviewer">
+          <div class="avatar" style="background:var(--amber);" aria-hidden="true">K</div>
+          <div>
+            <div class="reviewer-name">Kat M.</div>
+            <div class="reviewer-source">Yelp Review</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card fade-up d2">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Owners are great people. Good breakfast too! Always a pleasure stopping in on my commute.</p>
+        <div class="reviewer">
+          <div class="avatar" style="background:var(--red);" aria-hidden="true">R</div>
+          <div>
+            <div class="reviewer-name">Rob T.</div>
+            <div class="reviewer-source">Google Review</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card fade-up d3">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Best Hunt Brothers Pizza around. I come here on lunch breaks — the staff always remember my order. That's a rare thing these days.</p>
+        <div class="reviewer">
+          <div class="avatar" style="background:#2a9d5c;" aria-hidden="true">D</div>
+          <div>
+            <div class="reviewer-name">Dana L.</div>
+            <div class="reviewer-source">Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     LOCATION & HOURS
+══════════════════════════════ -->
+<section id="location" class="section" style="background:var(--cream);">
+  <div class="container">
+    <div style="margin-bottom:52px;">
+      <p class="section-tag fade-up">Find Us</p>
+      <h2 class="section-title fade-up d1">Hours &amp; Location</h2>
+      <div class="divider fade-up d2"></div>
+    </div>
+
+    <div class="location-wrap">
+      <!-- Map -->
+      <div class="fade-up">
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3232.3765623!2d-79.087!3d35.9085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89acc2db5b43cd9b%3A0x1234abcd!2s4908+NC-54+W%2C+Chapel+Hill%2C+NC+27516!5e0!3m2!1sen!2sus!4v1700000000000"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="PSM Market map — 4908 NC Hwy 54 West, Chapel Hill, NC"
+          ></iframe>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+          <a href="https://maps.google.com/?q=4908+NC-54+W,+Chapel+Hill,+NC+27516" target="_blank" rel="noopener noreferrer" class="btn btn-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+      <!-- Hours + Info -->
+      <div class="fade-up d2">
+        <div class="info-block" style="margin-bottom:36px;">
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="info-label">Address</div>
+              <div class="info-val">4908 NC Highway 54 West<br>Chapel Hill, NC 27516</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="info-label">Phone</div>
+              <div class="info-val"><a href="tel:+19199677552">(919) 967-7552</a></div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-size:1rem;font-weight:800;color:var(--brown);margin-bottom:16px;">Store Hours</h3>
+        <table class="hours-table" aria-label="PSM Market store hours">
+          <tbody>
+            <tr id="row-mon"><td>Monday</td><td id="hrs-mon">6:00 AM – 7:00 PM</td></tr>
+            <tr id="row-tue"><td>Tuesday</td><td id="hrs-tue">6:00 AM – 7:00 PM</td></tr>
+            <tr id="row-wed"><td>Wednesday</td><td id="hrs-wed">6:00 AM – 7:00 PM</td></tr>
+            <tr id="row-thu"><td>Thursday</td><td id="hrs-thu">6:00 AM – 7:00 PM</td></tr>
+            <tr id="row-fri"><td>Friday</td><td id="hrs-fri">6:00 AM – 7:00 PM</td></tr>
+            <tr id="row-sat"><td>Saturday</td><td id="hrs-sat">7:00 AM – 6:00 PM</td></tr>
+            <tr id="row-sun"><td>Sunday</td><td id="hrs-sun">7:00 AM – 6:00 PM</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.78rem;color:var(--muted);margin-top:12px;">
+          * Summer hours (May–Sep): Mon–Fri 6 AM–8 PM &nbsp;|&nbsp; Sat–Sun 7 AM–7 PM<br>
+          * Winter hours (Oct–Apr): Mon–Fri 6 AM–7 PM &nbsp;|&nbsp; Sat–Sun 7 AM–6 PM<br>
+          * May vary on holidays. Call to confirm.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:0;">
+          <div class="logo-badge" aria-hidden="true">PSM</div>
+          <div class="logo-text">
+            <span class="name">PSM Market</span>
+            <span class="sub">Chapel Hill, NC</span>
+          </div>
+        </div>
+        <p>Your friendly neighborhood gas station and convenience store on Hwy 54 West. Serving the Chapel Hill community every day.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#food">Hot Food Menu</a></li>
+          <li><a href="#gas">Marathon Fuel</a></li>
+          <li><a href="#about">About PSM</a></li>
+          <li><a href="#location">Hours &amp; Location</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Contact &amp; Visit</h4>
+        <ul>
+          <li><a href="tel:+19199677552">(919) 967-7552</a></li>
+          <li><a href="https://maps.google.com/?q=4908+NC-54+W,+Chapel+Hill,+NC+27516" target="_blank" rel="noopener noreferrer">4908 NC Hwy 54 W, Chapel Hill</a></li>
+          <li><a href="https://www.uhaul.com/Locations/Truck-Rentals-near-Chapel-Hill-NC-27516/004116/" target="_blank" rel="noopener noreferrer">Reserve U-Haul Online</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 PSM Market — Chapel Hill, NC. All rights reserved.</p>
+      <p class="footer-copy" style="color:rgba(255,255,255,.2);">Marathon&reg; is a registered trademark of Marathon Petroleum Corp. Hunt Brothers Pizza&reg; is a registered trademark.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="back-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+
+<script>
+  // ── Sticky header ────────────────────────────────────
+  const header  = document.getElementById('site-header');
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 20);
+    backTop.classList.toggle('show', y > 380);
+  }, { passive: true });
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ── Mobile nav ────────────────────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  document.querySelectorAll('.mobile-link').forEach(a =>
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    })
+  );
+
+  // ── Smooth scroll for anchor links ──────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = header.offsetHeight + 8;
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ── Scroll fade-up ────────────────────────────────────
+  const observer = new IntersectionObserver(entries =>
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+    { threshold: 0.1, rootMargin: '0px 0px -36px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Highlight today's row in hours table ─────────────
+  const days = ['sun','mon','tue','wed','thu','fri','sat'];
+  const today = days[new Date().getDay()];
+  const todayRow = document.getElementById('row-' + today);
+  if (todayRow) todayRow.classList.add('today');
+
+  // ── Seasonal hours ────────────────────────────────────
+  // Summer = May(4) through Sep(8); Winter = Oct(9) through Apr(3)
+  const now      = new Date();
+  const month    = now.getMonth(); // 0-indexed
+  const isSummer = month >= 4 && month <= 8;
+  const isWeekend = [0, 6].includes(now.getDay());
+
+  // Update hours bar
+  const hoursEl = document.getElementById('todays-hours');
+  if (isWeekend) {
+    hoursEl.textContent = isSummer ? '7:00 AM – 7:00 PM (Summer)' : '7:00 AM – 6:00 PM (Winter)';
+  } else {
+    hoursEl.textContent = isSummer ? '6:00 AM – 8:00 PM (Summer)' : '6:00 AM – 7:00 PM (Winter)';
+  }
+
+  // Update hours table cells to reflect current season
+  const wkdayClose  = isSummer ? '8:00 PM' : '7:00 PM';
+  const wkendClose  = isSummer ? '7:00 PM' : '6:00 PM';
+  const wkdayStr    = `6:00 AM – ${wkdayClose}`;
+  const wkendStr    = `7:00 AM – ${wkendClose}`;
+  ['mon','tue','wed','thu','fri'].forEach(d => {
+    const el = document.getElementById('hrs-' + d);
+    if (el) el.textContent = wkdayStr;
+  });
+  ['sat','sun'].forEach(d => {
+    const el = document.getElementById('hrs-' + d);
+    if (el) el.textContent = wkendStr;
+  });
+</script>
+
+</body>
+</html>
