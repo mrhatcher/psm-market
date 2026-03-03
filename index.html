@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PSM Market — Chapel Hill, NC | Gas, Food & More</title>
-  <meta name="description" content="PSM Market on Hwy 54 West in Chapel Hill, NC. Marathon gas, Hunt Brothers Pizza, hot food, ATM, U-Haul rentals, and NC Lottery. Open 7 days a week." />
+  <meta name="description" content="PSM Market on Hwy 54 West in Chapel Hill, NC. Marathon gas, non-ethanol fuel, diesel, LP gas exchange, Hunt Brothers Pizza, ATM, U-Haul rentals, and NC Lottery. Open 7 days a week." />
   <meta name="keywords" content="PSM Market, PSM Food Mart, Chapel Hill gas station, Marathon gas Chapel Hill, Hunt Brothers Pizza Chapel Hill, convenience store Chapel Hill NC, U-Haul Chapel Hill" />
   <!-- Open Graph -->
   <meta property="og:title" content="PSM Market — Chapel Hill, NC" />
@@ -956,6 +956,24 @@
           </svg>
           Convenience Store
         </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          Non-Ethanol Gas
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <ellipse cx="12" cy="8" rx="8" ry="4"/><path d="M4 8v8c0 2.21 3.58 4 8 4s8-1.79 8-4V8"/>
+          </svg>
+          Diesel Fuel
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/>
+          </svg>
+          LP Gas Exchange
+        </div>
       </div>
     </div>
   </div>
@@ -1072,6 +1090,17 @@
         <p>Drinks, snacks, tobacco, household essentials, and more. Everything you need when you need it most.</p>
         <span class="service-tag" style="background:rgba(120,90,60,.1);color:var(--brown2);">Fully Stocked</span>
       </div>
+
+      <div class="service-card fade-up d6">
+        <div class="service-icon" style="background:rgba(46,189,138,.1);" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2a9d6b" stroke-width="2">
+            <ellipse cx="12" cy="8" rx="8" ry="4"/><path d="M4 8v8c0 2.21 3.58 4 8 4s8-1.79 8-4V8"/>
+          </svg>
+        </div>
+        <h3>LP Gas Tank Exchange</h3>
+        <p>Swap your empty propane tank for a full one, fast. Great for grills, patio heaters, and outdoor gear — no wait, no hassle.</p>
+        <span class="service-tag" style="background:rgba(46,189,138,.1);color:#2a9d6b;">In Stock</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1154,7 +1183,7 @@
       <div class="gas-content fade-up">
         <p class="section-tag" style="color:var(--amber);">Fuel Up</p>
         <h2>Quality Marathon fuel, right on your route</h2>
-        <p>Whether you're heading into Chapel Hill, cutting through on Hwy 54, or just running low — PSM Market has three grades of Marathon gasoline to keep you moving. Quick in, quick out.</p>
+        <p>PSM Market carries Marathon gasoline in three grades, plus <strong style="color:#ffc57a;">non-ethanol fuel</strong> for small engines, boats, and classics — and <strong style="color:#ffc57a;">diesel</strong> for trucks and equipment. Whatever you drive, we've got the right fuel for it.</p>
         <div class="marathon-badge" aria-label="Marathon gas brand">
           <div class="marathon-m" aria-hidden="true">M</div>
           <div class="marathon-label">
@@ -1164,7 +1193,7 @@
         </div>
       </div>
 
-      <div class="gas-grades fade-up d2">
+      <div class="gas-grades fade-up d2" style="grid-template-columns: repeat(3, 1fr); gap: 12px;">
         <div class="grade-card">
           <div class="grade-num">87</div>
           <div class="grade-name">Regular</div>
@@ -1176,6 +1205,14 @@
         <div class="grade-card">
           <div class="grade-num">93</div>
           <div class="grade-name">Premium</div>
+        </div>
+        <div class="grade-card" style="border-color:rgba(46,189,138,.35);background:rgba(46,189,138,.07);">
+          <div class="grade-num" style="color:#4cbe7a;font-size:1.1rem;margin-bottom:6px;">E0</div>
+          <div class="grade-name">Non-Ethanol</div>
+        </div>
+        <div class="grade-card" style="border-color:rgba(232,128,26,.35);background:rgba(232,128,26,.07);grid-column:span 2;">
+          <div class="grade-num" style="font-size:1.1rem;margin-bottom:6px;">⛽</div>
+          <div class="grade-name">Diesel</div>
         </div>
       </div>
     </div>
@@ -1193,7 +1230,7 @@
       <h2 class="section-title fade-up d1">Extra services that make life easier</h2>
     </div>
 
-    <div class="perks-grid">
+    <div class="perks-grid" style="grid-template-columns: repeat(3, 1fr);">
       <div class="perk-card atm fade-up">
         <div class="perk-icon" aria-hidden="true">🏧</div>
         <h3>ATM On-Site</h3>
@@ -1210,6 +1247,24 @@
         <div class="perk-icon" aria-hidden="true">🎰</div>
         <h3>NC Lottery Tickets</h3>
         <p>Full selection of NC Lottery tickets available in-store. Scratch-offs, Powerball, Mega Millions, Cash 5 — pick your lucky numbers.</p>
+      </div>
+
+      <div class="perk-card fade-up d1" style="background:#edfaf4;border:1px solid #b2e8d0;box-shadow:var(--shadow);">
+        <div class="perk-icon" style="background:rgba(46,189,138,.15);" aria-hidden="true">🔥</div>
+        <h3>LP Gas Tank Exchange</h3>
+        <p>Swap your empty propane tank for a full one. Perfect for backyard grills, fire pits, and patio heaters — quick and easy, no appointment needed.</p>
+      </div>
+
+      <div class="perk-card fade-up d2" style="background:#f0fdf4;border:1px solid #bbf7d0;box-shadow:var(--shadow);">
+        <div class="perk-icon" style="background:rgba(34,197,94,.12);" aria-hidden="true">⛽</div>
+        <h3>Non-Ethanol Fuel (E0)</h3>
+        <p>Pure, ethanol-free gasoline — ideal for small engines, lawn equipment, boats, motorcycles, and vintage vehicles that run better without ethanol blends.</p>
+      </div>
+
+      <div class="perk-card fade-up d3" style="background:#fefce8;border:1px solid #fde68a;box-shadow:var(--shadow);">
+        <div class="perk-icon" style="background:rgba(234,179,8,.12);" aria-hidden="true">🚛</div>
+        <h3>Diesel Fuel</h3>
+        <p>On-site diesel for trucks, SUVs, and heavy equipment. Reliable supply, convenient location on Hwy 54 — get fueled up without going out of your way.</p>
       </div>
     </div>
   </div>
